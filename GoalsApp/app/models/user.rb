@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   validates :username, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
   
+  has_many :goals
   
   def self.generate_session_token
     SecureRandom::urlsafe_base64(16)

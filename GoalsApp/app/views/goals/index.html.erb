@@ -1,0 +1,11 @@
+<h1>Index of Goals for <%= current_user.username %></h1>
+
+<% current_user.goals.each do |goal| %>
+<p> 
+  <%= link_to goal.title, goal_url(goal) %>
+</p>  
+  
+<% end %>
+
+<%= link_to "Create Goal", new_goal_url %>
+  

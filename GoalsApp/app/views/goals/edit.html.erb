@@ -1,0 +1,36 @@
+<%= render "layouts/errors" %>
+<h1>Edit Goal</h1>
+
+<form action="<%= goal_url(@goal) %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <%= auth_token %>
+  <p>
+  <label>Title
+    <input type="text" name="goal[title]" value="<%= @goal.title %>">
+  </label>
+  </p>
+  
+  <p>
+    <label>Body
+      <textarea name="goal[body]"><%= @goal.body %></textarea>
+    </label>
+  </p>
+  
+  <p>
+    Permission<br>
+    <label>Public
+      <input type="radio" name="goal[permission]" value="Public"
+      <% if @goal.permission == "Public" %>
+        <%= "checked" %> 
+      <% end %>>
+    </label>
+    <label>Private
+      <input type="radio" name="goal[permission]" value="Private"
+      <% if @goal.permission == "Private" %>
+        <%= "checked" %> 
+      <% end %>>
+    </label>
+  </p>
+  
+  <p><input type="submit" value="Edit Goal"></p>
+</form>
